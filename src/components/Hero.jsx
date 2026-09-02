@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Hero() {
   const technologies = [
     "React.js",
@@ -10,7 +12,7 @@ function Hero() {
 
   return (
     <section className="min-h-[calc(100vh-5rem)] flex items-center">
-      <div className="max-w-7xl mx-auto w-full px-6 py-20">
+      <div className="max-w-[1440px] mx-auto w-full px-8 py-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           {/* Left Content */}
@@ -46,8 +48,10 @@ function Hero() {
 
             {/* Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="/projects"
+
+              {/* Projects Button */}
+              <Link
+                to="/projects"
                 className="px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:-translate-y-1"
                 style={{
                   backgroundColor: "var(--primary)",
@@ -55,21 +59,22 @@ function Hero() {
                 }}
               >
                 View Projects
-              </a>
+              </Link>
 
+              {/* Resume Button */}
               <a
                 href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                download = "Aman_Raj_Resume.pdf"
                 className="px-6 py-3 rounded-lg font-semibold border transition-all duration-300 hover:-translate-y-1"
                 style={{
                   backgroundColor: "var(--card)",
-                  borderColor: "var(--border)",
                   color: "var(--foreground)",
+                  borderColor: "var(--border)",
                 }}
               >
                 View Resume
               </a>
+
             </div>
 
             {/* Technologies */}
@@ -108,6 +113,7 @@ function Hero() {
                 borderColor: "var(--border)",
               }}
             >
+              {/* Decorative Circle */}
               <div
                 className="absolute -top-6 -right-6 w-24 h-24 rounded-full opacity-20"
                 style={{
@@ -115,6 +121,7 @@ function Hero() {
                 }}
               />
 
+              {/* Decorative Circle */}
               <div
                 className="absolute -bottom-6 -left-6 w-20 h-20 rounded-full opacity-20"
                 style={{
@@ -122,6 +129,7 @@ function Hero() {
                 }}
               />
 
+              {/* Developer Content */}
               <div className="text-center">
                 <div className="text-7xl mb-5">
                   👨‍💻

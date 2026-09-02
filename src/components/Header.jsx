@@ -1,126 +1,134 @@
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
-
 import ThemeToggle from "./ThemeToggle";
 
 function Header() {
-    const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-    const navLinks = [
-        { name: "Home", path: "/" },
-        { name: "About", path: "/about" },
-        { name: "Projects", path: "/projects" },
-        { name: "Contact", path: "/contact" },
-    ];
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Resume", path: "/resume" },
+    { name: "Projects", path: "/projects" },
+    { name: "Contact", path: "/contact" },
+  ];
 
-    const getLinkClass = ({ isActive }) =>
-        `transition ${isActive
-            ? "font-semibold"
-            : "opacity-70 hover:opacity-100"
-        }`;
+  return (
+    <header
+      className="fixed top-0 left-0 right-0 z-50 border-b"
+      style={{
+        backgroundColor: "var(--background)",
+        borderColor: "var(--border)",
+      }}
+    >
+      <div className="max-w-[1440px] mx-auto px-8 h-20 flex items-center justify-between">
 
-    return (
-        <header
-            className="fixed top-0 left-0 w-full z-50 border-b backdrop-blur-md"
-            style={{
-                backgroundColor: "color-mix(in srgb, var(--background) 85%, transparent)",
-                borderColor: "var(--border)",
-            }}
+        {/* Logo */}
+        <NavLink
+          to="/"
+          className="text-xl font-bold"
+          style={{ color: "var(--foreground)" }}
         >
-            <nav className="max-w-7xl mx-auto px-6 py-4">
+          Aman Raj
+        </NavLink>
 
-                <div className="flex items-center justify-between">
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-8">
 
-                    {/* Logo */}
-                    <Link
-                        to="/"
-                        className="text-2xl font-bold"
-                    >
-                        Aman<span style={{ color: "var(--primary)" }}>.</span>
-                    </Link>
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.path}
+              to={link.path}
+              className="text-sm font-medium transition-opacity hover:opacity-70"
+              style={({ isActive }) => ({
+                color: isActive
+                  ? "var(--primary)"
+                  : "var(--foreground)",
+              })}
+            >
+              {link.name}
+            </NavLink>
+          ))}
 
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center gap-8">
+          {/* Call Us Button */}
+          <a
+            href="tel:+916203060380"
+            className="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5"
+            style={{
+              backgroundColor: "var(--primary)",
+              color: "#ffffff",
+            }}
+          >
+            Call Us
+          </a>
 
-                        {navLinks.map((link) => (
-                            <NavLink
-                                key={link.path}
-                                to={link.path}
-                                className={getLinkClass}
-                            >
-                                {link.name}
-                            </NavLink>
-                        ))}
+          {/* Theme Toggle */}
+          <ThemeToggle />
 
-                        {/* Theme Button */}
-                        <ThemeToggle />
+        </nav>
 
-                        {/* Resume */}
-                        <a
-                            href="/resume.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-4 py-2 rounded-lg text-white transition hover:scale-105"
-                            style={{
-                                backgroundColor: "var(--primary)",
-                            }}
-                        >
-                            Resume
-                        </a>
+        {/* Mobile Controls */}
+        <div className="md:hidden flex items-center gap-4">
 
-                    </div>
+          {/* Call Button */}
+          <a
+            href="tel:+916203060380"
+            className="px-4 py-2 rounded-lg text-sm font-semibold"
+            style={{
+              backgroundColor: "var(--primary)",
+              color: "#ffffff",
+            }}
+          >
+            Call
+          </a>
 
-                    {/* Mobile Controls */}
-                    <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
 
-                        <ThemeToggle />
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-2xl"
+            style={{
+              color: "var(--foreground)",
+            }}
+            aria-label="Toggle navigation menu"
+          >
+            ☰
+          </button>
 
-                        <button
-                            onClick={() => setMenuOpen(!menuOpen)}
-                            className="text-2xl"
-                            aria-label="Toggle navigation menu"
-                            aria-expanded={menuOpen}
-                        >
-                            {menuOpen ? "×" : "☰"}
-                        </button>
+        </div>
+      </div>
 
-                    </div>
+      {/* Mobile Navigation */}
+      {menuOpen && (
+        <nav
+          className="md:hidden border-t px-8 py-5"
+          style={{
+            backgroundColor: "var(--background)",
+            borderColor: "var(--border)",
+          }}
+        >
+          <div className="flex flex-col gap-5">
 
-                </div>
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                onClick={() => setMenuOpen(false)}
+                className="font-medium"
+                style={({ isActive }) => ({
+                  color: isActive
+                    ? "var(--primary)"
+                    : "var(--foreground)",
+                })}
+              >
+                {link.name}
+              </NavLink>
+            ))}
 
-                {/* Mobile Menu */}
-                {menuOpen && (
-                    <div className="md:hidden mt-5 pb-3 flex flex-col gap-5">
-
-                        {navLinks.map((link) => (
-                            <NavLink
-                                key={link.path}
-                                to={link.path}
-                                onClick={() => setMenuOpen(false)}
-                                className={getLinkClass}
-                            >
-                                {link.name}
-                            </NavLink>
-                        ))}
-
-                        <a
-                            href="/resume.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="w-fit px-4 py-2 rounded-lg text-white"
-                            style={{
-                                backgroundColor: "var(--primary)",
-                            }}
-                        >
-                            Resume
-                        </a>
-
-                    </div>
-                )}
-
-            </nav>
-        </header>
-    );
+          </div>
+        </nav>
+      )}
+    </header>
+  );
 }
 
 export default Header;

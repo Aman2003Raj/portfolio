@@ -1,112 +1,120 @@
 function About() {
-  const details = [
-    {
-      title: "Education",
-      value: "B.Tech CSE",
-    },
-    {
-      title: "Institute",
-      value: "VNIT Nagpur",
-    },
-    {
-      title: "Graduated",
-      value: "2026",
-    },
-    {
-      title: "Focus",
-      value: "Web Development",
-    },
-  ];
+    return (
+        <section
+            id="about"
+            className="relative py-24 border-t overflow-hidden"
+            style={{
+                borderColor: "var(--border)",
+            }}
+        >
 
-  return (
-    <section
-      id="about"
-      className="py-24 border-t"
-      style={{ borderColor: "var(--border)" }}
-    >
-      <div className="max-w-7xl mx-auto px-6">
-
-        {/* Heading */}
-        <div className="mb-12">
-          <p
-            className="text-sm font-semibold tracking-widest uppercase mb-3"
-            style={{ color: "var(--primary)" }}
-          >
-            About Me
-          </p>
-
-          <h2 className="text-3xl md:text-4xl font-bold">
-            Computer Science Engineer
-          </h2>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-
-          {/* About */}
-          <div>
-            <p
-              className="text-lg leading-8"
-              style={{ color: "var(--muted)" }}
+            <div
+                className="absolute inset-0 flex items-start justify-center -translate-y-4 pointer-events-none select-none overflow-hidden"
+                aria-hidden="true"
             >
-              I'm Aman Raj, a Computer Science and Engineering graduate
-              from Visvesvaraya National Institute of Technology, Nagpur.
-              I completed my B.Tech in 2026.
-            </p>
-
-            <p
-              className="mt-6 text-lg leading-8"
-              style={{ color: "var(--muted)" }}
-            >
-              My technical interests include web development, machine
-              learning, reinforcement learning, and large language models.
-              I enjoy building practical applications and exploring how
-              different technologies can be used to solve real-world
-              problems.
-            </p>
-
-            <p
-              className="mt-6 text-lg leading-8"
-              style={{ color: "var(--muted)" }}
-            >
-              My projects include a full-stack MERN music streaming
-              application, an AI-powered news summarizer, and a
-              topology-aware reinforcement learning project for
-              cooperative caching in Content-Centric Networks.
-            </p>
-          </div>
-
-          {/* Details */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {details.map((detail) => (
-              <div
-                key={detail.title}
-                className="p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1"
-                style={{
-                  backgroundColor: "var(--card)",
-                  borderColor: "var(--border)",
-                }}
-              >
-                <p
-                  className="text-sm mb-2"
-                  style={{ color: "var(--muted)" }}
+                <h1
+                    className="
+            whitespace-nowrap
+            uppercase
+            font-black
+            leading-none
+            tracking-[-0.08em]
+            text-[22vw]
+            md:text-[18vw]
+            lg:text-[20vw]
+          "
+                    style={{
+                        color: "var(--primary)",
+                        opacity: 0.9,
+                    }}
                 >
-                  {detail.title}
-                </p>
+                    ABOUT ME
+                </h1>
+            </div>
 
-                <p
-                  className="font-semibold"
-                  style={{ color: "var(--foreground)" }}
+
+            <div className="relative z-10 max-w-[1300px] mx-auto px-8 ">
+
+                <div
+                    className="rounded-3xl border p-8 md:p-12 backdrop-blur-sm"
+                    style={{
+                        backgroundColor: "rgba(128, 128, 128, 0.08)",
+                        borderColor: "rgba(128, 128, 128, 0.25)",
+                    }}
                 >
-                  {detail.value}
-                </p>
-              </div>
-            ))}
-          </div>
 
-        </div>
-      </div>
-    </section>
-  );
+                    <div className="text-center mb-8">
+
+                        <p
+                            className="
+                text-sm
+                font-semibold
+                tracking-[0.25em]
+                uppercase
+                mb-3
+              "
+                            style={{
+                                color: "var(--primary)",
+                            }}
+                        >
+
+                        </p>
+
+                        <h2
+                            className="text-5xl md:text-6xl font-bold"
+                            style={{
+                                color: "var(--foreground)",
+                            }}
+                        >
+                            About Me
+                        </h2>
+
+                    </div>
+
+                    {/* =========================================
+              ABOUT CONTENT
+              ========================================= */}
+                    <div
+                        className="
+              max-w-4xl
+              mx-auto
+              text-center
+              text-lg
+              leading-8
+            "
+                        style={{
+                            color: "var(--foreground)",
+                        }}
+                    >
+
+                        <p>
+                            I'm Aman Raj, a Computer Science and Engineering
+                            graduate from Visvesvaraya National Institute of
+                            Technology, Nagpur. I enjoy building practical
+                            applications and exploring technologies that solve
+                            real-world problems.
+                        </p>
+
+                        <p className="mt-6">
+                            My interests span modern web development, artificial
+                            intelligence, machine learning, and reinforcement
+                            learning. I like turning ideas into working projects
+                            while continuously learning new technologies and
+                            improving my development skills.
+                        </p>
+
+                        <p className="mt-6">
+                            Through my academic and personal projects, I have
+                            worked with technologies such as React, Node.js,
+                            MongoDB, Python, machine learning, and REST APIs.
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    );
 }
 
 export default About;

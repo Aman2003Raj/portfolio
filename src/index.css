@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F5E6D3;
+  --background: #dcd9d4;
   --foreground: #241A14;
 
   --primary: #D95F2B;
@@ -17,16 +17,15 @@
 
 [data-theme="dark"] {
   --background: #0D0D0D;
-  --foreground: #F5E6D3;
+  --foreground: #dbd5cd;
 
   --primary: #F97316;
   --primary-hover: #EA580C;
 
-  --secondary: #F5E6D3;
+  --secondary: #241A14;
 
   --card: #181411;
-  --border: #33251D;
-
+  --border: #4A3426;
   --muted: #A99B8D;
 }
 
@@ -44,4 +43,8 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+/* Hide project horizontal scrollbar */
+.project-scroll::-webkit-scrollbar {
+  display: none;
 }
