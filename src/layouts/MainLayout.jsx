@@ -3,8 +3,13 @@ import Footer from "../components/Footer";
 
 function MainLayout({ children }) {
   return (
-    <div className="min-h-screen bg-gray-950 text-white flex flex-col">
-
+    <div
+      className="min-h-screen flex flex-col"
+      style={{
+        backgroundColor: "var(--background)",
+        color: "var(--foreground)",
+      }}
+    >
       <Header />
 
       <main className="flex-1 pt-20">
@@ -12,7 +17,6 @@ function MainLayout({ children }) {
       </main>
 
       <Footer />
-
     </div>
   );
 }

@@ -1,94 +1,109 @@
 function About() {
+  const details = [
+    {
+      title: "Education",
+      value: "B.Tech CSE",
+    },
+    {
+      title: "Institute",
+      value: "VNIT Nagpur",
+    },
+    {
+      title: "Graduated",
+      value: "2026",
+    },
+    {
+      title: "Focus",
+      value: "Web Development",
+    },
+  ];
+
   return (
     <section
       id="about"
-      className="py-24 border-t border-white/10"
+      className="py-24 border-t"
+      style={{ borderColor: "var(--border)" }}
     >
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Section Heading */}
+        {/* Heading */}
         <div className="mb-12">
-          <p className="text-blue-500 font-medium mb-2">
+          <p
+            className="text-sm font-semibold tracking-widest uppercase mb-3"
+            style={{ color: "var(--primary)" }}
+          >
             About Me
           </p>
 
           <h2 className="text-3xl md:text-4xl font-bold">
-            A little about me
+            Computer Science Engineer
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
 
-          {/* Description */}
-          <div className="text-gray-400 leading-relaxed space-y-5">
-
-            <p>
-              I'm a Computer Science Engineering graduate with
-              an interest in building web applications and
-              solving problems through technology.
+          {/* About */}
+          <div>
+            <p
+              className="text-lg leading-8"
+              style={{ color: "var(--muted)" }}
+            >
+              I'm Aman Raj, a Computer Science and Engineering graduate
+              from Visvesvaraya National Institute of Technology, Nagpur.
+              I completed my B.Tech in 2026.
             </p>
 
-            <p>
-              I enjoy working with JavaScript, React and modern
-              web technologies, while continuously improving my
-              understanding of software development.
+            <p
+              className="mt-6 text-lg leading-8"
+              style={{ color: "var(--muted)" }}
+            >
+              My technical interests include web development, machine
+              learning, reinforcement learning, and large language models.
+              I enjoy building practical applications and exploring how
+              different technologies can be used to solve real-world
+              problems.
             </p>
 
-            <p>
-              I'm currently focused on strengthening my frontend
-              and full-stack development skills by building
-              practical projects.
+            <p
+              className="mt-6 text-lg leading-8"
+              style={{ color: "var(--muted)" }}
+            >
+              My projects include a full-stack MERN music streaming
+              application, an AI-powered news summarizer, and a
+              topology-aware reinforcement learning project for
+              cooperative caching in Content-Centric Networks.
             </p>
-
           </div>
 
-          {/* Quick Information */}
-          <div className="grid grid-cols-2 gap-4">
+          {/* Details */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            {details.map((detail) => (
+              <div
+                key={detail.title}
+                className="p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  backgroundColor: "var(--card)",
+                  borderColor: "var(--border)",
+                }}
+              >
+                <p
+                  className="text-sm mb-2"
+                  style={{ color: "var(--muted)" }}
+                >
+                  {detail.title}
+                </p>
 
-            <div className="p-5 rounded-xl border border-white/10 bg-white/5">
-              <p className="text-sm text-gray-500">
-                Education
-              </p>
-
-              <p className="mt-2 font-medium">
-                B.Tech CSE
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl border border-white/10 bg-white/5">
-              <p className="text-sm text-gray-500">
-                Focus
-              </p>
-
-              <p className="mt-2 font-medium">
-                Web Development
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl border border-white/10 bg-white/5">
-              <p className="text-sm text-gray-500">
-                Frontend
-              </p>
-
-              <p className="mt-2 font-medium">
-                React
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl border border-white/10 bg-white/5">
-              <p className="text-sm text-gray-500">
-                Location
-              </p>
-
-              <p className="mt-2 font-medium">
-                India
-              </p>
-            </div>
-
+                <p
+                  className="font-semibold"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {detail.value}
+                </p>
+              </div>
+            ))}
           </div>
 
         </div>
-
       </div>
     </section>
   );

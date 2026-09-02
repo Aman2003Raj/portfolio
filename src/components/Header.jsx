@@ -1,106 +1,126 @@
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
+import ThemeToggle from "./ThemeToggle";
+
 function Header() {
-  const [menuOpen, setMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
+    const navLinks = [
+        { name: "Home", path: "/" },
+        { name: "About", path: "/about" },
+        { name: "Projects", path: "/projects" },
+        { name: "Contact", path: "/contact" },
+    ];
 
-  const getLinkClass = ({ isActive }) =>
-    `transition ${
-      isActive
-        ? "text-white"
-        : "text-gray-400 hover:text-white"
-    }`;
+    const getLinkClass = ({ isActive }) =>
+        `transition ${isActive
+            ? "font-semibold"
+            : "opacity-70 hover:opacity-100"
+        }`;
 
-  return (
-    <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-gray-950/80 backdrop-blur-md">
+    return (
+        <header
+            className="fixed top-0 left-0 w-full z-50 border-b backdrop-blur-md"
+            style={{
+                backgroundColor: "color-mix(in srgb, var(--background) 85%, transparent)",
+                borderColor: "var(--border)",
+            }}
+        >
+            <nav className="max-w-7xl mx-auto px-6 py-4">
 
-      <nav className="max-w-7xl mx-auto px-6 py-4">
+                <div className="flex items-center justify-between">
 
-        <div className="flex items-center justify-between">
+                    {/* Logo */}
+                    <Link
+                        to="/"
+                        className="text-2xl font-bold"
+                    >
+                        Aman<span style={{ color: "var(--primary)" }}>.</span>
+                    </Link>
 
-          {/* Logo */}
-          <Link
-            to="/"
-            className="text-2xl font-bold tracking-tight"
-          >
-            Aman<span className="text-blue-500">.</span>
-          </Link>
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-8">
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.path}
+                                to={link.path}
+                                className={getLinkClass}
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
 
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                className={getLinkClass}
-              >
-                {link.name}
-              </NavLink>
-            ))}
+                        {/* Theme Button */}
+                        <ThemeToggle />
 
-            {/* Resume */}
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-2 px-4 py-2 rounded-lg border border-white/20 hover:bg-white hover:text-gray-950 transition"
-            >
-              Resume
-            </a>
+                        {/* Resume */}
+                        <a
+                            href="/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 rounded-lg text-white transition hover:scale-105"
+                            style={{
+                                backgroundColor: "var(--primary)",
+                            }}
+                        >
+                            Resume
+                        </a>
 
-          </div>
+                    </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-gray-300 text-2xl"
-            aria-label="Toggle navigation menu"
-            aria-expanded={menuOpen}
-          >
-            {menuOpen ? "×" : "☰"}
-          </button>
+                    {/* Mobile Controls */}
+                    <div className="flex items-center gap-3 md:hidden">
 
-        </div>
+                        <ThemeToggle />
 
-        {/* Mobile Navigation */}
-        {menuOpen && (
-          <div className="md:hidden mt-4 pb-4 flex flex-col gap-4">
+                        <button
+                            onClick={() => setMenuOpen(!menuOpen)}
+                            className="text-2xl"
+                            aria-label="Toggle navigation menu"
+                            aria-expanded={menuOpen}
+                        >
+                            {menuOpen ? "×" : "☰"}
+                        </button>
 
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.path}
-                to={link.path}
-                onClick={() => setMenuOpen(false)}
-                className={getLinkClass}
-              >
-                {link.name}
-              </NavLink>
-            ))}
+                    </div>
 
-            <a
-              href="./resume_WD.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit px-4 py-2 rounded-lg border border-white/20 hover:bg-white hover:text-gray-950 transition"
-            >
-              Resume
-            </a>
+                </div>
 
-          </div>
-        )}
+                {/* Mobile Menu */}
+                {menuOpen && (
+                    <div className="md:hidden mt-5 pb-3 flex flex-col gap-5">
 
-      </nav>
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.path}
+                                to={link.path}
+                                onClick={() => setMenuOpen(false)}
+                                className={getLinkClass}
+                            >
+                                {link.name}
+                            </NavLink>
+                        ))}
 
-    </header>
-  );
+                        <a
+                            href="/resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-fit px-4 py-2 rounded-lg text-white"
+                            style={{
+                                backgroundColor: "var(--primary)",
+                            }}
+                        >
+                            Resume
+                        </a>
+
+                    </div>
+                )}
+
+            </nav>
+        </header>
+    );
 }
 
 export default Header;
